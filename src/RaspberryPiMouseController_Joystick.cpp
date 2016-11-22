@@ -136,8 +136,7 @@ RTC::ReturnCode_t RaspberryPiMouseController_Joystick::onDeactivated(RTC::Unique
 
 RTC::ReturnCode_t RaspberryPiMouseController_Joystick::onExecute(RTC::UniqueId ec_id)
 {
-	const double distance_of_wheels = 0.095;
-	const double max_speed = 0.2;
+	
 
 	if (m_joystick_floatIn.isNew() || m_joystick_longIn.isNew())
 	{
@@ -173,6 +172,9 @@ RTC::ReturnCode_t RaspberryPiMouseController_Joystick::onExecute(RTC::UniqueId e
 			double target_angle = atan2(joy_posy, joy_posx);
 			if (m_orientationIn.isNew())
 			{
+				const double distance_of_wheels = 0.095;
+				const double max_speed = 0.2;
+
 				m_orientationIn.read();
 				double rotate = m_orientation.data.y;
 				if (rotate > M_PI)
